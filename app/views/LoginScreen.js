@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, KeyboardAvoidingView } from 'react-native';
-import LoginForm from './LoginForm';
+import LoginForm from '../components/LoginForm';
 
-class Login extends React.Component {
+class LoginScreen extends React.Component {
 	render() {
 		return (
 			<KeyboardAvoidingView behavior="padding" style={styles.container}>
 				<View style={styles.logoContainer}>
-					<Image resizeMode="contain" style={styles.logo} source={require('../../components/images/logo.png')} />
+					<Image resizeMode="contain" style={styles.logo} source={require('../assets/images/logo.png')} />
 					<Text style={styles.title}>.ringiot</Text>
 				</View>
 				<View style={styles.titleContainer}>
@@ -21,17 +21,7 @@ class Login extends React.Component {
 	}
 }
 
-const AppNavigator = createStackNavigator(
-	{
-		Login: Login,
-		PasswordRetrieval: PasswordRetrieval
-	},
-	{
-		initialRouteName: "Login"
-	}
-);
-
-export default createAppContainer(AppNavigator);
+export default LoginScreen;
 
 const styles = StyleSheet.create({
 	container: {

@@ -1,18 +1,18 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, KeyboardAvoidingView } from 'react-native';
-import PasswordRetrievalForm from './PasswordRetrievalForm';
+import PasswordRetrievalForm from '../components/PasswordRetrievalForm';
 
 class Login extends React.Component {
 	render() {
 		return (
 			<KeyboardAvoidingView behavior="padding" style={styles.container}>
 				<View style={styles.logoContainer}>
-					<Image resizeMode="contain" style={styles.logo} source={require('../../components/images/logo.png')} />
+					<Image resizeMode="contain" style={styles.logo} source={require('../assets/images/logo.png')} />
 					<Text style={styles.title}>.ringiot</Text>
 				</View>
 				<View style={styles.titleContainer}>
 					
-				</View>
+				</View>d
 				<View style={styles.formContainer}>
 					<PasswordRetrievalForm />
 				</View>
@@ -21,7 +21,7 @@ class Login extends React.Component {
 	}
 }
 
-import PasswordRetrieval from './PasswordRetrieval';
+
 
 export default Login;
 

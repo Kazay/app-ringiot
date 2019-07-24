@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
-import { AppRegistry,StyleSheet,Text ,View} from 'react-native';
-//import Login Component 
-import Login from './components/Login/Login';
+import { createSwitchNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
+import HomeScreen from './app/views/HomeScreen';
+import NotificationsScreen from './app/views/NotificationsScreen';
+import AuthLoadingScreen from './app/views/AuthLoadingScreen';
+import LoginScreen from './app/views/LoginScreen';
 
-export default class ringiot extends Component {
-  render() {
-    return (
-     <Login />
-    );
+const AppStack = createStackNavigator({
+	Home: HomeScreen,
+	Notifications: NotificationsScreen
+});
+
+const AuthStack = createStackNavigator({
+	Login: LoginScreen
+});
+
+export default createAppContainer(createSwitchNavigator(
+  {
+    AuthLoading: AuthLoadingScreen,
+    App: AppStack,
+    Auth: AuthStack,
+  },
+  {
+    initialRouteName: 'AuthLoading',
   }
-}
-
-AppRegistry.registerComponent('ringiot', () => ringiot);
+));
