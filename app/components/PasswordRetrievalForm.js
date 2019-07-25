@@ -11,7 +11,6 @@ class LoginForm extends React.Component {
 		};
 
 		this.handleEmailChange = this.handleEmailChange.bind(this);
-		this.handlePasswordChange = this.handlePasswordChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 		
@@ -26,6 +25,7 @@ class LoginForm extends React.Component {
 	render() {
 		return (
 			<View style={styles.container}>
+				<Text style={styles.info}>You'll receive an email with your account informations.</Text>
 				<TextInput style = {styles.input} 
 				autoCapitalize="none" 
 				onSubmitEditing={() => this.passwordInput.focus()} 
@@ -40,7 +40,7 @@ class LoginForm extends React.Component {
 
 				<TouchableOpacity style={styles.buttonContainer} 
 						onPress={this.handleSubmit}>
-					<Text  style={styles.buttonText}>send</Text>
+					<Text style={styles.buttonText}>send</Text>
 				</TouchableOpacity> 
 			</View>
 		);
@@ -51,9 +51,13 @@ export default LoginForm;
 
 const styles = StyleSheet.create({
 	container: {
-	padding: 20
+		padding: 20
 	},
-	input:{
+	info: {
+		paddingBottom: 20,
+		textAlign: 'center'
+	},
+	input: {
 		height: 40,
 		backgroundColor: 'rgba(225,225,225,0.2)',
 		marginBottom: 10,

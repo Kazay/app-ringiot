@@ -1,14 +1,19 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, KeyboardAvoidingView } from 'react-native';
-import LoginForm from '../components/LoginForm';
+import LoginForm from '../components/LoginForm';	
+import LogoTitle from '../components/LogoTitle';	
+
 
 class LoginScreen extends React.Component {
+	static navigationOptions = {
+		header: null
+	};
+
 	render() {
 		return (
 			<KeyboardAvoidingView behavior="padding" style={styles.container}>
 				<View style={styles.logoContainer}>
 					<Image resizeMode="contain" style={styles.logo} source={require('../assets/images/logo.png')} />
-					<Text style={styles.title}>.ringiot</Text>
 				</View>
 				<View style={styles.titleContainer}>
 					
@@ -16,6 +21,9 @@ class LoginScreen extends React.Component {
 				<View style={styles.formContainer}>
 					<LoginForm />
 				</View>
+				<Text style={styles.forgetText} onPress={() => this.props.navigation.navigate('PasswordRetrieval')}>
+					forgot your password ?
+				</Text>
 			</KeyboardAvoidingView>
 		);
 	}
@@ -47,4 +55,10 @@ const styles = StyleSheet.create({
 		fontSize: 28,
 		textAlign: 'center'
 	},
+	forgetText: {
+		fontWeight: 'bold',
+		textAlign: 'center',
+		textDecorationLine: 'underline',
+		paddingBottom: 20
+	}
 });

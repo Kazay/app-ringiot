@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import Config from '../config';
 
 class LoginForm extends React.Component {
 	constructor(props) {
@@ -16,7 +17,21 @@ class LoginForm extends React.Component {
 	}
 		
 	handleSubmit = () => {
-		Alert.alert('Email: '+ this.state.email +' Password: '+ this.state.password);
+		fetch('ec2-15-188-55-37.eu-west-3.compute.amazonaws.com:3000/login', { 
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			method: 'POST',
+			body: JSON.stringify({
+				loginName: this.state.email,
+				password: this.state.password,
+				})
+		})
+		.then((response) => response.json())
+		.then((responseJson) => {
+			Alert.alert(responseJson);
+		})
+		.catch(error=>console.log(error))
 	}
 
 	handleEmailChange = text => {
@@ -56,9 +71,6 @@ class LoginForm extends React.Component {
 						onPress={this.handleSubmit}>
 					<Text  style={styles.buttonText}>login</Text>
 				</TouchableOpacity> 
-				<Text style={styles.forgetText} onPress={() => this.props.navigation.navigate('PasswordRetrieval')}>
-				forgot your password ?
-				</Text>
 			</View>
 		);
 	}
@@ -85,8 +97,5 @@ const styles = StyleSheet.create({
 		color: '#000',
 		textAlign: 'center',
 		fontWeight: '700'
-	},
-	forgetText: {
-		textAlign: 'center'
 	}
 });

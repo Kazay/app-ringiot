@@ -3,6 +3,7 @@ import { createSwitchNavigator, createStackNavigator, createAppContainer } from 
 import HomeScreen from './app/views/HomeScreen';
 import NotificationsScreen from './app/views/NotificationsScreen';
 import AuthLoadingScreen from './app/views/AuthLoadingScreen';
+import PasswordRetrievalScreen from './app/views/PasswordRetrievalScreen';
 import LoginScreen from './app/views/LoginScreen';
 
 const AppStack = createStackNavigator({
@@ -11,7 +12,8 @@ const AppStack = createStackNavigator({
 });
 
 const AuthStack = createStackNavigator({
-	Login: LoginScreen
+	Login: LoginScreen,
+	PasswordRetrieval: PasswordRetrievalScreen
 });
 
 export default createAppContainer(createSwitchNavigator(

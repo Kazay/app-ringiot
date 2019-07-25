@@ -1,18 +1,17 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, KeyboardAvoidingView } from 'react-native';
 import PasswordRetrievalForm from '../components/PasswordRetrievalForm';
+import LogoTitle from '../components/LogoTitle';
 
-class Login extends React.Component {
+class PasswordRetrievalScreen extends React.Component {
+	static navigationOptions = {
+		headerTitle: <LogoTitle />,
+		headerRight: (<View />)
+	};
+
 	render() {
 		return (
-			<KeyboardAvoidingView behavior="padding" style={styles.container}>
-				<View style={styles.logoContainer}>
-					<Image resizeMode="contain" style={styles.logo} source={require('../assets/images/logo.png')} />
-					<Text style={styles.title}>.ringiot</Text>
-				</View>
-				<View style={styles.titleContainer}>
-					
-				</View>d
+			<KeyboardAvoidingView style={styles.container}>
 				<View style={styles.formContainer}>
 					<PasswordRetrievalForm />
 				</View>
@@ -23,30 +22,30 @@ class Login extends React.Component {
 
 
 
-export default Login;
+export default PasswordRetrievalScreen;
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: '#fff',
 	},
-	logoContainer: {
-		alignItems: 'center',
-		flexGrow: 1,
+	formContainer: {
+		//alignItems: 'center',
+		flex: 1,
 		justifyContent: 'center'
-	},
-	titleContainer: {
-		alignItems: 'center',
-		justifyContent: 'flex-start'
 	},
 	logo: {
 		//position: 'absolute',
-		width: 200,
-		height: 200
+		width: 150,
+		height: 150
 	},
 	title: {
 		paddingTop: 14,
 		fontSize: 28,
 		textAlign: 'center'
 	},
+	buttonBack: {
+		backgroundColor: 'transparent',
+		marginBottom: 14
+	}
 });
