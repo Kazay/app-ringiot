@@ -1,11 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 class NotificationsScreen extends React.Component {
 	render() {
 		return(
 			<View style={styles.container}>
 				<Text style={styles.text}>Notifications</Text>
+				<TouchableOpacity onPress={this.props.navigation.openDrawer}>
+					<Text>Open Drawer</Text>
+				</TouchableOpacity>
 			</View>
 		);
 	}

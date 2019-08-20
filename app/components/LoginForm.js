@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import Config from '../config';
 
 class LoginForm extends React.Component {
@@ -8,7 +9,8 @@ class LoginForm extends React.Component {
 
 		this.state = {
 			email: '',
-			password: ''
+			password: '',
+			data: []
 		};
 
 		this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -17,22 +19,37 @@ class LoginForm extends React.Component {
 	}
 		
 	handleSubmit = () => {
-		fetch('ec2-15-188-55-37.eu-west-3.compute.amazonaws.com:3000/login', { 
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			method: 'POST',
-			body: JSON.stringify({
-				loginName: this.state.email,
-				password: this.state.password,
-				})
-		})
-		.then((response) => response.json())
-		.then((responseJson) => {
-			Alert.alert(responseJson);
-		})
-		.catch(error=>console.log(error))
+		if(this.state.email !== '' && this.state.password !== '')
+		{
+			fetch(Config.SERVEUR_URL_PROD+'login', { 
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json"
+				},
+				method: 'POST',
+				body: JSON.stringify({
+					loginName: this.state.email,
+					password: this.state.password,
+					})
+			})
+			.then((res) => res.json())
+			.then((res) => {
+					this.setState({ data: res })
+					if(this.state.data.username !== undefined)
+						this._signInAsync();	
+					else
+						Alert.alert('Shooot, invalid user/password combination, please try again.');
+			})
+			.catch(error=>console.log(error))
+		}
+		else
+			Alert.alert('empty email or password field. try again sailor !');
 	}
+
+	_signInAsync = async () => {
+		await AsyncStorage.setItem('userToken', this.state.data.username);
+		this.props.navigation.navigate('App');
+	};
 
 	handleEmailChange = text => {
 		this.setState({ email: text });

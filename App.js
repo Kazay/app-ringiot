@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
-import { createSwitchNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
-import HomeScreen from './app/views/HomeScreen';
+import { createSwitchNavigator, createStackNavigator, createDrawerNavigator, createAppContainer } from 'react-navigation';
+import UnlockScreen from './app/views/UnlockScreen';
 import NotificationsScreen from './app/views/NotificationsScreen';
 import AuthLoadingScreen from './app/views/AuthLoadingScreen';
 import PasswordRetrievalScreen from './app/views/PasswordRetrievalScreen';
 import LoginScreen from './app/views/LoginScreen';
 
-const AppStack = createStackNavigator({
-	Home: HomeScreen,
+const AppStack = createDrawerNavigator({
+	Unlock: UnlockScreen,
 	Notifications: NotificationsScreen
-});
+	},
+	{
+		hideStatusBar: true,
+		drawerBackgroundColor: 'rgba(255,255,255,.9)',
+		overlayColor: '#6b52ae',
+		contentOptions: {
+			activeTintColor: '#fff',
+			activeBackgroundColor: '#6b52ae',
+		},
+	}
+);
 
 const AuthStack = createStackNavigator({
 	Login: LoginScreen,

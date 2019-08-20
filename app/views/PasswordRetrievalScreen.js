@@ -13,7 +13,7 @@ class PasswordRetrievalScreen extends React.Component {
 		return (
 			<KeyboardAvoidingView style={styles.container}>
 				<View style={styles.formContainer}>
-					<PasswordRetrievalForm />
+					<PasswordRetrievalForm navigation={this.props.navigation}/>
 				</View>
 			</KeyboardAvoidingView>
 		);

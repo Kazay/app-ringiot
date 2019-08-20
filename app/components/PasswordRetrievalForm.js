@@ -1,13 +1,17 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import RedirectModal from '../components/RedirectModal';	
+import Config from '../config';
 
-class LoginForm extends React.Component {
+class PasswordRetrievalForm extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			email: '',
-			password: ''
+			modalVisible: false,
+			modalText: '',
+			previewUrl: ''
 		};
 
 		this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -15,7 +19,28 @@ class LoginForm extends React.Component {
 	}
 		
 	handleSubmit = () => {
-		Alert.alert('Email: '+ this.state.email);
+		if(this.state.email !== '')
+		{
+			fetch(Config.SERVEUR_URL_PROD+'lostpassword', { 
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json"
+				},
+				method: 'POST',
+				body: JSON.stringify({
+					email: this.state.email
+					})
+			})
+			.then((res) => res.json())
+			.then((resp) => {
+				console.log(resp)
+				this.setState({modalVisible : !this.state.modalVisible, modalText : 'if a ringiot account for '+this.state.email+' exists, you will receive an email with your login informations.', previewUrl : resp.previewUrl});
+			})
+			.catch(error=>console.log(error))
+		}
+		else
+			Alert.alert('email field is empty. try again sailor !');
+		
 	}
 
 	handleEmailChange = text => {
@@ -41,13 +66,19 @@ class LoginForm extends React.Component {
 				<TouchableOpacity style={styles.buttonContainer} 
 						onPress={this.handleSubmit}>
 					<Text style={styles.buttonText}>send</Text>
-				</TouchableOpacity> 
+				</TouchableOpacity>
+				<RedirectModal
+					visible={this.state.modalVisible}
+					text={this.state.modalText}
+					navigation={this.props.navigation}
+					previewUrl={this.state.previewUrl}
+				/>
 			</View>
 		);
 	}
 }
 
-export default LoginForm;
+export default PasswordRetrievalForm;
 
 const styles = StyleSheet.create({
 	container: {

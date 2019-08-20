@@ -19,7 +19,7 @@ class LoginScreen extends React.Component {
 					
 				</View>
 				<View style={styles.formContainer}>
-					<LoginForm />
+					<LoginForm navigation={this.props.navigation}/>
 				</View>
 				<Text style={styles.forgetText} onPress={() => this.props.navigation.navigate('PasswordRetrieval')}>
 					forgot your password ?
