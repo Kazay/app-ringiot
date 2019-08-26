@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import Config from '../config';
+import { Texts, Buttons, Spacing, Inputs } from '../modules/Style';
 
 class LoginForm extends React.Component {
 	constructor(props) {
@@ -97,22 +98,15 @@ export default LoginForm;
 
 const styles = StyleSheet.create({
 	container: {
-	padding: 20
+		padding: Spacing.base
 	},
 	input:{
-		height: 40,
-		backgroundColor: 'rgba(225,225,225,0.2)',
-		marginBottom: 10,
-		padding: 10,
-		color: '#000'
+		...Inputs.primary
 	},
 	buttonContainer:{
-		backgroundColor: '#FFD900',
-		paddingVertical: 15
+		...Buttons.primary,
 	},
 	buttonText:{
-		color: '#000',
-		textAlign: 'center',
-		fontWeight: '700'
+		...Texts.label
 	}
 });

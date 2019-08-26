@@ -13,7 +13,6 @@ class UnlockScreen extends React.Component {
 		return(
 			<View style={styles.container}>
 				<Text style={styles.text}>Home</Text>
-				<Button title='Logout' onPress={() => this.handleLogout()} />
 				<TouchableOpacity onPress={this.props.navigation.openDrawer}>
 					<Text>Open Drawer</Text>
 				</TouchableOpacity>

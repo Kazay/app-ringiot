@@ -2,12 +2,19 @@ import React from 'react';
 import { View, StyleSheet, Image, Text } from 'react-native';
 
 class LogoTitle extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			size : props.size
+		}
+	}
 	render() {
 	  return (
 		<View style={styles.container}>
 			<Image
 				source={require('../assets/images/logo.png')}
-				style={styles.logo}
+				style={{height: this.state.size, width: this.state.size}}
 			/>
 		</View>
 		
@@ -23,9 +30,5 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center'
-	},
-	logo: {
-		width: 40,
-		height: 40,
-	},
+	}
 });

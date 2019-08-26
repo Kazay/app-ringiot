@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, KeyboardAvoidingView } from 'react-native';
+import { View, StyleSheet, KeyboardAvoidingView } from 'react-native';
 import PasswordRetrievalForm from '../components/PasswordRetrievalForm';
 import LogoTitle from '../components/LogoTitle';
 
 class PasswordRetrievalScreen extends React.Component {
 	static navigationOptions = {
-		headerTitle: <LogoTitle />,
+		headerTitle: <LogoTitle size={40} />,
 		headerRight: (<View />)
 	};
 

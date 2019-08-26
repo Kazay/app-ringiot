@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, KeyboardAvoidingView } from 'react-native';
 import LoginForm from '../components/LoginForm';	
-import LogoTitle from '../components/LogoTitle';	
+import LogoTitle from '../components/LogoTitle';
+import { Texts, Colors } from '../modules/Style';
 
 
 class LoginScreen extends React.Component {
@@ -21,7 +22,7 @@ class LoginScreen extends React.Component {
 				<View style={styles.formContainer}>
 					<LoginForm navigation={this.props.navigation}/>
 				</View>
-				<Text style={styles.forgetText} onPress={() => this.props.navigation.navigate('PasswordRetrieval')}>
+				<Text style={styles.passwordLostButton} onPress={() => this.props.navigation.navigate('PasswordRetrieval')}>
 					forgot your password ?
 				</Text>
 			</KeyboardAvoidingView>
@@ -34,7 +35,7 @@ export default LoginScreen;
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: Colors.white,
 	},
 	logoContainer: {
 		alignItems: 'center',
@@ -51,14 +52,9 @@ const styles = StyleSheet.create({
 		height: 200
 	},
 	title: {
-		paddingTop: 14,
-		fontSize: 28,
-		textAlign: 'center'
+		...Texts.title
 	},
-	forgetText: {
-		fontWeight: 'bold',
-		textAlign: 'center',
-		textDecorationLine: 'underline',
-		paddingBottom: 20
+	passwordLostButton: {
+		...Texts.link
 	}
 });
