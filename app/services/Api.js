@@ -1,32 +1,32 @@
-import React from 'react';
-import Config from '../config.js';
+import config from '../config';
+import axios from 'axios';
+import querystring from 'querystring';
 
-class Api extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			data : []
-		};
+function getPostHeaders() {
+	return {
+		'content-type': 'application/x-www-form-urlencoded'
 	};
+}
 
-	login(post) {
-		fetch( Config.SERVER_URL+'/login', { 
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				loginName: post.loginName,
-				password: post.password,
-				})
-		})
-		.then((response) => response.json())
-		.then((responseJson) => {
-			return responseJson.data;
-		})
-		.catch(error=>console.log(error))
+async function login(username, password) {
+	try {
+		const params = {
+		 	method: 'POST',
+			headers: getPostHeaders(),
+			data: querystring.stringify({ login: username, pass: password}),
+			url: `${config.API_URL}${config.API_ENDPOINTS.user}connect.php`
+		};
+		const logTry = await axios(params);
+		const data = logTry.data;
+		console.log(data);
+		return data.success ? data.results : Promise.reject(401);
+	} catch(e) {
+		return Promise.reject(400);
 	}
 }
 
-export default Api;
+
+export default {
+	login: login,
+	// notifications: notifications
+}

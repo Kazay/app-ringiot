@@ -1,7 +1,14 @@
-const SERVER_URL = 'http://15.188.55.37:3000/'; // dev
-const SERVEUR_URL_PROD = 'http://35.180.140.110:3000/'; // prod
+
+const prod = true; // passer à false pour le dev
+
+// Change l'url de l'api en fonction de l'environnement de prod ou de dev
+const API_URL = prod ? 'https://tchenioguillaume.fr/iot/' : 'https://tchenioguillaume.fr/iot/';
+
+const API_ENDPOINTS = {
+	user: 'user/'
+}
 
 export default {
-	SERVER_URL,
-	SERVEUR_URL_PROD
+	API_URL,
+	API_ENDPOINTS
 };
