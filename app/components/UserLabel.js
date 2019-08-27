@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
 		marginTop: Spacing.base	
 	},
 	label : {
+		fontFamily: 'RobotoMono-Bold',
 		textAlign : 'right',
-		fontWeight : '700'
+		fontSize: 20
 	}
 });

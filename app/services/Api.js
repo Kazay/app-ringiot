@@ -1,12 +1,12 @@
 import React from 'react';
-import Config from '../../config.js';
+import Config from '../config.js';
 
 class Api extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			data = []
+			data : []
 		};
 	};
 

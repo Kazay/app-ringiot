@@ -86,9 +86,11 @@ const styles = StyleSheet.create({
 	},
 	info: {
 		paddingBottom: 20,
-		textAlign: 'center'
+		textAlign: 'center',
+		fontFamily: 'RobotoMono-Regular',
 	},
 	input: {
+		fontFamily: 'RobotoMono-Regular',
 		height: 40,
 		backgroundColor: 'rgba(225,225,225,0.2)',
 		marginBottom: 10,
@@ -100,8 +102,8 @@ const styles = StyleSheet.create({
 		paddingVertical: 15
 	},
 	buttonText:{
+		fontFamily: 'RobotoMono-Bold',
 		color: '#000',
-		textAlign: 'center',
-		fontWeight: '700'
+		textAlign: 'center'
 	}
 });

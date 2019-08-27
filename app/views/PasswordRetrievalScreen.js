@@ -20,8 +20,6 @@ class PasswordRetrievalScreen extends React.Component {
 	}
 }
 
-
-
 export default PasswordRetrievalScreen;
 
 const styles = StyleSheet.create({

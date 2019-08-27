@@ -42,7 +42,9 @@ const AppStack = createDrawerNavigator({
 			activeTintColor: '#000',
 			activeBackgroundColor: Colors.primary,
 			labelStyle: {
-				textAlign : 'right'
+				textAlign : 'right',
+				fontFamily: 'RobotoMono-Regular',
+				fontWeight: 'normal'
 			}
 		},
 	}

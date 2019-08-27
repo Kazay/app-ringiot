@@ -28,8 +28,12 @@ export default Notification;
 
 const styles = StyleSheet.create({
 	container: {
-		width:'100%',
-		height:  200
+		height:  200,
+		width: '50%',
+		justifyContent: 'flex-start',
+		flexDirection: 'row',
+		flexWrap: 'wrap'
+
 	},
 	imageBackground: {
 		width: '100%',
@@ -46,7 +50,7 @@ const styles = StyleSheet.create({
 		borderColor: '#FFD900',
 		backgroundColor: '#FFD900',
 		fontSize: 16,
-		fontWeight: 'bold'
+		fontFamily: 'RobotoMono-Bold',
 	},
 	notificationCircle: {
 		position: 'absolute',
