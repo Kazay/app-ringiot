@@ -1,15 +1,19 @@
 import React from 'react';
-import { View, Button, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Button, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import { Colors, Texts, Spacing } from '../modules/Style';
 
 // Import des components
 import HeaderMenu from '../components/HeaderMenu';
 
 class UnlockScreen extends React.Component {
 
-	handleLogout = async () => {
-		await AsyncStorage.removeItem('userToken');
-		this.props.navigation.navigate('Auth');
+	constructor(props) {
+	    super(props)
+  }
+
+	unlock = () => {
+		// Send socket.io event to unlock the door
 	}
 
 	render() {
@@ -17,11 +21,15 @@ class UnlockScreen extends React.Component {
 			<View style={styles.container}>
 				<HeaderMenu navigation={this.props.navigation} title={"Unlock"}></HeaderMenu>
 				<View style={styles.content}>
-				
+					<ImageBackground style={styles.imageBackground} source={{uri: "https://static1.puretrend.com/articles/9/82/93/9/@/946388-sd-580x0-2.jpg"}}>
+						<TouchableOpacity
+							style={styles.unlockButton}
+							onPress={ this.unlock }>
+							<Text>Unlock</Text>
+						</TouchableOpacity>
+					</ImageBackground>
 				</View>
 			</View>
-
-
 		);
 	}
 }
@@ -36,5 +44,17 @@ const styles = StyleSheet.create({
 	content: {
 		flex: 9,
 		width: '100%'
+	},
+	imageBackground: {
+		width:'100%',
+		height: '100%',
+		flex: 1,
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'flex-end'
+	},
+	unlockButton: {
+		marginBottom: 100,
+		backgroundColor: Colors.primary
 	}
 });
