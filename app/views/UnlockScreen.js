@@ -2,6 +2,9 @@ import React from 'react';
 import { View, Button, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
+// Import des components
+import HeaderMenu from '../components/HeaderMenu';
+
 class UnlockScreen extends React.Component {
 
 	handleLogout = async () => {
@@ -12,11 +15,13 @@ class UnlockScreen extends React.Component {
 	render() {
 		return(
 			<View style={styles.container}>
-				<Text style={styles.text}>Home</Text>
-				<TouchableOpacity onPress={this.props.navigation.openDrawer}>
-					<Text>Open Drawer</Text>
-				</TouchableOpacity>
+				<HeaderMenu navigation={this.props.navigation} title={"Unlock"}></HeaderMenu>
+				<View style={styles.content}>
+				
+				</View>
 			</View>
+
+
 		);
 	}
 }
@@ -25,10 +30,11 @@ export default UnlockScreen;
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1
+		flex: 1,
+		width: '100%'
 	},
-	text: {
-		justifyContent: 'center',
-		alignItems: 'center'
+	content: {
+		flex: 9,
+		width: '100%'
 	}
 });

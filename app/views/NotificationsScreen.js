@@ -2,7 +2,10 @@ import React from 'react';
 import { SectionList, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { Texts, Spacing } from '../modules/Style';
 
+// Import des components
 import Notification from '../components/Notification';
+import HeaderMenu from '../components/HeaderMenu';
+
 
 
 class NotificationsScreen extends React.Component {
@@ -28,18 +31,7 @@ class NotificationsScreen extends React.Component {
   render() {
     return (
 			<View style={ styles.container }>
-				<View style={ styles.header }>
-					<Text style={ Texts.header }> Notifications </Text>
-					<TouchableOpacity
-						style={ styles.menu }
-						onPress={ this.props.navigation.openDrawer }>
-						<Image
-							style={{width: 20, height: 20}}
-							source={require('../assets/images/menu_icon.png')}
-						>
-						</Image>
-					</TouchableOpacity>
-				</View>
+				<HeaderMenu navigation={this.props.navigation} title={"Notifications"}></HeaderMenu>
 				<View style={styles.content}>
 					<SectionList style={styles.listContainer}
 						sections={this.state.notifications}
@@ -56,30 +48,17 @@ export default NotificationsScreen;
 
 const styles = StyleSheet.create({
   container: {
-	flex: 1,
-	width: '100%'
+		flex: 1,
+		width: '100%'
   },
   content: {
-	flex: 9,
-	width: '100%'
-  },
-  header : {
-		flex : 1,
-		flexDirection : 'row-reverse',
-		justifyContent : 'space-between',
-		alignItems: 'center',
-		backgroundColor: '#fff',
-		elevation: 1
-  },
-  menu : {
-	paddingLeft : Spacing.base
+		flex: 9,
+		width: '100%'
   },
   text: {
     justifyContent: 'center',
     alignItems: 'center'
   },
-	listContainer: {
-	},
 	listHeader: {
 		fontFamily: 'RobotoMono-Regular',
 		height: 50,
@@ -89,5 +68,5 @@ const styles = StyleSheet.create({
 		marginRight: Spacing.base,
 		marginTop: Spacing.large,
 		marginBottom: -10
-	},
+	}
 });
