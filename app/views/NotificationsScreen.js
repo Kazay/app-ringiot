@@ -3,9 +3,8 @@ import { SectionList, View, Text, TouchableOpacity, Image, StyleSheet } from 're
 import { Texts, Spacing } from '../modules/Style';
 
 // Import des components
-import Notification from '../components/Notification';
 import HeaderMenu from '../components/HeaderMenu';
-
+import NofiticationsList from '../components/NotificationsList';
 
 
 class NotificationsScreen extends React.Component {
@@ -20,10 +19,43 @@ class NotificationsScreen extends React.Component {
 	componentDidMount() {
 			this.setState({
 				notifications: [
-					{title: 'Jeudi 22 Août 2019', data: [{url:'https://image.shutterstock.com/image-photo/smiling-bearded-young-male-model-600w-788313199.jpg', timestamp:'19h33'},
-																							{url:'https://image.shutterstock.com/image-photo/smiling-bearded-young-male-model-600w-788313199.jpg', timestamp:'19h23'}
-					]},
-					{title: 'Lundi 13 Juillet 2019', data: [{url:'https://image.shutterstock.com/image-photo/smiling-bearded-young-male-model-600w-788313199.jpg', timestamp:'23h41'}]}
+					{
+						title: 'Jeudi 22 Août 2019', 
+						key: '0',
+						data: [
+							{
+								list : [
+									{
+										key: '0',
+										url:'https://image.shutterstock.com/image-photo/smiling-bearded-young-male-model-600w-788313199.jpg',
+										timestamp:'19h33'
+									},
+									{
+										key: '1',
+										url:'https://image.shutterstock.com/image-photo/smiling-bearded-young-male-model-600w-788313199.jpg',
+										timestamp:'19h23'
+									}								
+								]
+							}
+						]
+					},
+					{
+						title: 'Lundi 13 Juillet 2019',
+						key: '1',
+						data: [
+							{
+								list: [
+									{
+										key: '0',
+										url:'https://image.shutterstock.com/image-photo/smiling-bearded-young-male-model-600w-788313199.jpg',
+										timestamp:'23h41'
+									}
+								]
+								
+							}
+							
+						]
+					}
 				]
 			});
 	}
@@ -33,11 +65,7 @@ class NotificationsScreen extends React.Component {
 			<View style={ styles.container }>
 				<HeaderMenu navigation={this.props.navigation} title={"Notifications"}></HeaderMenu>
 				<View style={styles.content}>
-					<SectionList style={styles.listContainer}
-						sections={this.state.notifications}
-						renderItem={({item}) => <Notification url={item.url} timestamp={item.timestamp}/> }
-						renderSectionHeader={({section}) => <Text style={styles.listHeader}>{section.title}</Text>}
-						keyExtractor={(item, index) => index} />
+					<NofiticationsList sections={this.state.notifications} />
 				</View>
 			</View>
     );
