@@ -1,5 +1,6 @@
 export const primary = '#FFD900'
-export const secondary = '#'
+export const secondary = '#FFE345'
+export const alert = '#f74040'
 export const light = '#EDF2F4'
 export const dark = '#000'
 

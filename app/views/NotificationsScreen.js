@@ -20,7 +20,7 @@ class NotificationsScreen extends React.Component {
 			this.setState({
 				notifications: [
 					{
-						title: 'Jeudi 22 Août 2019', 
+						title: 'August 2019, Wed. 22', 
 						key: '0',
 						data: [
 							{
@@ -28,19 +28,19 @@ class NotificationsScreen extends React.Component {
 									{
 										key: '0',
 										url:'https://image.shutterstock.com/image-photo/smiling-bearded-young-male-model-600w-788313199.jpg',
-										timestamp:'19h33'
+										timestamp:'19:33'
 									},
 									{
 										key: '1',
 										url:'https://image.shutterstock.com/image-photo/smiling-bearded-young-male-model-600w-788313199.jpg',
-										timestamp:'19h23'
+										timestamp:'19:23'
 									}								
 								]
 							}
 						]
 					},
 					{
-						title: 'Lundi 13 Juillet 2019',
+						title: 'July 2019, Mon. 13',
 						key: '1',
 						data: [
 							{
@@ -48,7 +48,7 @@ class NotificationsScreen extends React.Component {
 									{
 										key: '0',
 										url:'https://image.shutterstock.com/image-photo/smiling-bearded-young-male-model-600w-788313199.jpg',
-										timestamp:'23h41'
+										timestamp:'23:41'
 									}
 								]
 								
