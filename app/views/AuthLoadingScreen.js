@@ -4,7 +4,9 @@ import {
 	StatusBar,
 	View,
 } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
+
+import Utils from '../services/Utils';
+
 
 class AuthLoadingScreen extends React.Component {
 constructor(props) {
@@ -13,17 +15,15 @@ constructor(props) {
 }
 
 _bootstrapAsync = async () => {
-	const userStored = await AsyncStorage.getItem('user'); // Recherche d'un token utilisateur présent en async storage
-	console.log(userStored);
-	const userParsed = JSON.parse(userStored);
+	const user = await Utils.getUserFromStorage();
 	let navTo = 'Auth'; // Route vers laquelle rediriger l'utilisateur
-	if (userStored) {
-		if (userParsed.id && userParsed.username && userParsed.token) {
+	if (user) {
+		if (user.id && user.username && user.token) {
 			// Si un token est présent pour l'utilisateur, on le connecte directement sur la page d'accueil
 			navTo = 'App';
 		} else {
 			// Etant donné qu'une des données est manquante, on reset le stockage en AsyncStorage
-			await AsyncStorage.removeItem('user')
+			await Utils.removeUserFromStorage();
 		}
 	}
 	this.props.navigation.navigate(navTo);

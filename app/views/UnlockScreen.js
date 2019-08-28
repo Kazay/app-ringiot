@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Button, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
 import { Colors, Texts, Spacing } from '../modules/Style';
 
 // Import des components
