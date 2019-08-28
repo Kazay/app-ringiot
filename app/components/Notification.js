@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
-import Config from '../config';
+import { Colors } from '../modules/Style';
 
 class Notification extends React.Component {
 	constructor(props) {
@@ -8,7 +8,8 @@ class Notification extends React.Component {
 
 		this.state = {
 			url: props.url,
-			timestamp: props.timestamp
+			timestamp: props.timestamp,
+			new: props.new
 		};
 	}
 
@@ -16,7 +17,7 @@ class Notification extends React.Component {
 		return (
 			<View style={styles.container}>
 				<ImageBackground style={styles.imageBackground} source={{uri: this.state.url}}>
-					<View style={styles.notificationCircle}></View>
+					{ this.state.new !== undefined ? <View style={styles.notificationCircle}></View> : null }
 					<Text style={styles.textImage}>{this.state.timestamp}</Text>
 				</ImageBackground>
 			</View>
@@ -56,10 +57,10 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		left: 20,
 		top: 20,
-		width:20,
-		height: 20,
+		width:10,
+		height: 10,
 		borderRadius: 100,
-		backgroundColor: '#FFD900'
+		backgroundColor: Colors.alert
 
 	}
 });

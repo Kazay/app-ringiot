@@ -24,7 +24,7 @@ class UnlockScreen extends React.Component {
 						<TouchableOpacity
 							style={styles.unlockButton}
 							onPress={ this.unlock }>
-							<Text>Unlock</Text>
+							<Text style={styles.unlockText}>Unlock</Text>
 						</TouchableOpacity>
 					</ImageBackground>
 				</View>
@@ -53,7 +53,21 @@ const styles = StyleSheet.create({
 		alignItems: 'flex-end'
 	},
 	unlockButton: {
+		borderRadius : 50,
+		width: 100,
+		height: 100,
 		marginBottom: 100,
-		backgroundColor: Colors.primary
+		backgroundColor: Colors.secondary,
+		borderWidth: 5,
+		borderColor: Colors.primary
+	},
+	unlockText: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
+		textAlign: 'center',
+		textAlignVertical: 'center',
+		textTransform: 'uppercase',
+		fontFamily: 'RobotoMono-Bold',
 	}
 });
