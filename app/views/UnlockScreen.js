@@ -3,6 +3,7 @@ import SocketIOClient from 'socket.io-client';
 import { View, Button, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import { Colors, Texts, Spacing } from '../modules/Style';
 //ws://192.168.1.182:5678/newConnection
+// websocket aws : ws://15.188.62.173:3000/
 // Import des components
 import HeaderMenu from '../components/HeaderMenu';
 
@@ -15,7 +16,7 @@ class UnlockScreen extends React.Component {
 	}
 	
 	componentDidMount() {
-		this.socket = SocketIOClient('ws://15.188.62.173:3000/');
+		this.socket = SocketIOClient('ws://192.168.1.182:5678/newConnection');
 		this.socket.on('connect', () => {
 			console.log('CONNECTED');
 		});

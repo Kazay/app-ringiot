@@ -3,9 +3,11 @@ import {
 	ActivityIndicator,
 	StatusBar,
 	View,
+	StyleSheet
 } from 'react-native';
 
 import Utils from '../services/Utils';
+import { Spacing } from '../modules/Style';
 
 
 class AuthLoadingScreen extends React.Component {
@@ -31,12 +33,23 @@ _bootstrapAsync = async () => {
 
 render() {
 	return (
-	<View>
-		<ActivityIndicator />
+	<View style={ styles.container }>
+		<ActivityIndicator style={ styles.loading } />
 		<StatusBar barStyle="default" />
 	</View>
 	);
 }
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	loading: {
+		margin: Spacing.large
+	}
+});
 
 export default AuthLoadingScreen;

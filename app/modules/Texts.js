@@ -27,3 +27,9 @@ export const header = {
 	fontSize : 16,
 	paddingRight : Spacing.base
 }
+
+export const labelSmall = {
+	fontFamily: Fonts.italic,
+	fontSize: 12,
+	textAlign: 'center'
+}

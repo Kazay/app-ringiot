@@ -47,7 +47,7 @@ class SettingsScreen extends React.Component {
 							source={require('../assets/images/person-icon.png')}
 							style={{height: 150, width: 150}}
 						/>
-						{Utils.renderIf(!this.state.isLoaded, <ActivityIndicator /> )}
+						{Utils.renderIf(!this.state.isLoaded, <ActivityIndicator style={{marginTop: Spacing.larger}} /> )}
 						{Utils.renderIf(this.state.isLoaded, <ParamsInfos box={this.state.box} user={this.state.user}></ParamsInfos> )}
 					</View>
 				</View>
