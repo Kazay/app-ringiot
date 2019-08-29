@@ -1,6 +1,6 @@
 import * as React from "react"
-import { Text, View, FlatList, SectionList, StyleSheet } from "react-native"
-import { Spacing } from '../modules/Style'
+import { Text, FlatList, SectionList, StyleSheet, AppState } from "react-native"
+import { Spacing, Fonts } from '../modules/Style'
 import Notification from './Notification'
 
 export class NofiticationsList extends React.Component {
@@ -9,6 +9,21 @@ export class NofiticationsList extends React.Component {
 
 		this.state = {
 			sections : this.props.sections
+		}
+	}
+
+	componentDidMount() {
+		AppState.addEventListener('change', this.handleStateChange);
+	}
+
+	componentWillUnmount() {
+		AppState.removeEventListener('change', this.handleStateChange);
+	}
+
+	handleStateChange(appState) {
+		if(appState === 'background')
+		{
+			console.log('background');
 		}
 	}
 
@@ -85,7 +100,7 @@ const styles = StyleSheet.create({
 	  listContainer: {
 	  },
 	  listHeader: {
-		  fontFamily: 'RobotoMono-Regular',
+		  fontFamily: Fonts.regular,
 		  height: 50,
 		  color: 'black',
 		  textAlign: 'right',

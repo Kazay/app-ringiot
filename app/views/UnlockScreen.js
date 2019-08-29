@@ -1,19 +1,29 @@
 import React from 'react';
+import SocketIOClient from 'socket.io-client';
 import { View, Button, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
 import { Colors, Texts, Spacing } from '../modules/Style';
-
+//ws://192.168.1.182:5678/newConnection
 // Import des components
 import HeaderMenu from '../components/HeaderMenu';
 
 class UnlockScreen extends React.Component {
 
 	constructor(props) {
-	    super(props)
-  }
+		super(props)
+		
+		this.unlock = this.unlock.bind(this);
+	}
+	
+	componentDidMount() {
+		this.socket = SocketIOClient('ws://15.188.62.173:3000/');
+		this.socket.on('connect', () => {
+			console.log('CONNECTED');
+		});
+	}
 
 	unlock = () => {
-		// Send socket.io event to unlock the door
+		console.log('UNLOCK')
+		this.socket.emit('unlock', { msg : 'UNLOCKED' } );
 	}
 
 	render() {

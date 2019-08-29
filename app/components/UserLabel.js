@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import { Spacing } from '../modules/Style';
+import { Spacing, Fonts } from '../modules/Style';
 
 class UserLabel extends React.Component {
 	constructor(props) {
-		super(props);
+		super(props)
 
 		this.state = {
 			name : ''
@@ -13,9 +13,10 @@ class UserLabel extends React.Component {
 	}
 
 	componentDidMount(){
-		const value = AsyncStorage.getItem('userToken')
+		const value = AsyncStorage.getItem('user')
 		value.then((e) => {
-			this.setState({name: e})
+			user = JSON.parse(e)
+			this.setState({name: user.username})
 		})
 	}
 
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
 		marginTop: Spacing.base	
 	},
 	label : {
-		fontFamily: 'RobotoMono-Bold',
+		fontFamily: Fonts.bold,
 		textAlign : 'right',
 		fontSize: 20
 	}

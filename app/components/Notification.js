@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
-import { Colors } from '../modules/Style';
+import { Colors, Fonts } from '../modules/Style';
 
 class Notification extends React.Component {
 	constructor(props) {
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
 		borderColor: '#FFD900',
 		backgroundColor: '#FFD900',
 		fontSize: 16,
-		fontFamily: 'RobotoMono-Bold',
+		fontFamily: Fonts.bold,
 	},
 	notificationCircle: {
 		position: 'absolute',

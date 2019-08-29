@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import RedirectModal from '../components/RedirectModal';	
 import Config from '../config';
+import { Fonts } from '../modules/Style';
 
 class PasswordRetrievalForm extends React.Component {
 	constructor(props) {
@@ -87,10 +88,10 @@ const styles = StyleSheet.create({
 	info: {
 		paddingBottom: 20,
 		textAlign: 'center',
-		fontFamily: 'RobotoMono-Regular',
+		fontFamily: Fonts.regular,
 	},
 	input: {
-		fontFamily: 'RobotoMono-Regular',
+		fontFamily: Fonts.regular,
 		height: 40,
 		backgroundColor: 'rgba(225,225,225,0.2)',
 		marginBottom: 10,
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
 		paddingVertical: 15
 	},
 	buttonText:{
-		fontFamily: 'RobotoMono-Bold',
+		fontFamily: Fonts.bold,
 		color: '#000',
 		textAlign: 'center'
 	}

@@ -1,7 +1,8 @@
 import * as Spacing from './Spacing';
+import * as Fonts from './Fonts';
 
 export const title = {
-	fontFamily: 'RobotoMono-Regular',
+	fontFamily: Fonts.regular,
 	paddingTop: Spacing.base,
 	fontSize: 28,
 	textAlign: 'center'
@@ -9,18 +10,18 @@ export const title = {
 
 export const label = {
 	textAlign: 'center',
-	fontFamily: 'RobotoMono-Bold',
+	fontFamily: Fonts.bold,
 }
 
 export const link = {
-	fontFamily: 'RobotoMono-Bold',
+	fontFamily: Fonts.bold,
 	textAlign: 'center',
 	textDecorationLine: 'underline',
 	paddingBottom: Spacing.base
 }
 
 export const header = {
-	fontFamily: 'RobotoMono-Regular',
+	fontFamily: Fonts.regular,
 	textAlign: 'right',
 	textTransform : 'uppercase',
 	fontSize : 16,

@@ -14,7 +14,6 @@ constructor(props) {
 
 _bootstrapAsync = async () => {
 	const userStored = await AsyncStorage.getItem('user'); // Recherche d'un token utilisateur présent en async storage
-	console.log(userStored);
 	const userParsed = JSON.parse(userStored);
 	let navTo = 'Auth'; // Route vers laquelle rediriger l'utilisateur
 	if (userStored) {

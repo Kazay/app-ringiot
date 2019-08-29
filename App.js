@@ -23,14 +23,14 @@ const AppStack = createDrawerNavigator({
 					<UserLabel />
 				</View>
 				<ScrollView>
-						<DrawerItems {...props}/>
+					<DrawerItems {...props}/>
 				</ScrollView>
 				<TouchableHighlight
 					style={{flex: 1, justifyContent: 'flex-end', alignItems: 'center'}} 
 					onPress={ () => {
 						AsyncStorage.clear();
 						props.navigation.navigate('Login')
-				}}>
+					}}>
 					<Text style={{...Texts.link, marginBottom: Spacing.medium}}>Log out</Text>
 				</TouchableHighlight>
 			</SafeAreaView>
