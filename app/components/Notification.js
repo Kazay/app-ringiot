@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import { Colors, Fonts } from '../modules/Style';
+import moment from 'moment';
+
 
 class Notification extends React.Component {
 	constructor(props) {
@@ -8,7 +10,7 @@ class Notification extends React.Component {
 
 		this.state = {
 			url: props.url,
-			timestamp: props.timestamp,
+			date: props.date,
 			new: props.new
 		};
 	}
@@ -18,7 +20,7 @@ class Notification extends React.Component {
 			<View style={styles.container}>
 				<ImageBackground style={styles.imageBackground} source={{uri: this.state.url}}>
 					{ this.state.new !== undefined ? <View style={styles.notificationCircle}></View> : null }
-					<Text style={styles.textImage}>{this.state.timestamp}</Text>
+					<Text style={styles.textImage}>{ moment(this.state.date).format('hh:mm') }</Text>
 				</ImageBackground>
 			</View>
 		);

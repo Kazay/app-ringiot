@@ -6,7 +6,8 @@ const API_URL = prod ? 'https://tchenioguillaume.fr/iot/' : 'https://tchenioguil
 
 const API_ENDPOINTS = {
 	user: 'user/',
-	rasp: 'rasp/' 
+	rasp: 'rasp/',
+	notification: 'notification/'
 }
 
 export default {

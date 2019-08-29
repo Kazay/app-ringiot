@@ -72,8 +72,31 @@ async function getBoxInfos(boxId) {
 	}
 }
 
+async function getNotifications(boxId) {
+	try {
+		const user = await Utils.getUserFromStorage();
+		const token = user.token || '';
+		const query = querystring.stringify({ id_rasp: boxId, token: token });
+		const params = {
+		 	method: 'GET',
+			url: `${config.API_URL}${config.API_ENDPOINTS.notification}get.php?${query}`
+		};
+		const response = await axios(params);
+		const result = response.data;
+		if(result.success) {
+			// The first user of the array is the user we want
+			return result.results.datas || [];
+		} else {
+			Promise.reject(401);
+		}
+	} catch(e) {
+		return Promise.reject(400);
+	}
+}
+
 export default {
 	login: login,
 	getUserInfos: getUserInfos,
 	getBoxInfos: getBoxInfos,
+	getNotifications: getNotifications
 }

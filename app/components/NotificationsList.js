@@ -50,7 +50,7 @@ export class NofiticationsList extends React.Component {
 
 	renderListItem = ({ item }) => {
 		return (
-			<Notification url={item.url} timestamp={item.timestamp}/>
+			<Notification url={item.url} date={item.date}/>
 		)
 	}
 

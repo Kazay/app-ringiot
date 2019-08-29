@@ -2,10 +2,11 @@ import React from 'react';
 import { SectionList, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { Texts, Spacing } from '../modules/Style';
 
-// Import des components
+// Import des components/services
 import HeaderMenu from '../components/HeaderMenu';
 import NofiticationsList from '../components/NotificationsList';
-
+import Api from '../services/Api';
+import Utils from '../services/Utils';
 
 class NotificationsScreen extends React.Component {
 
@@ -14,50 +15,25 @@ class NotificationsScreen extends React.Component {
     this.state = {
 			notifications: []
 		}
+
+		this._bootstrapAsync();
   }
 
+	async _bootstrapAsync() {
+		try {
+			const user = await Utils.getUserFromStorage();
+			const raspId = user.id_rasp;
+			const notifications = await Api.getNotifications(raspId);
+			const formatedNotifications = Utils.formateNotifications(notifications);
+			this.setState({notifications: formatedNotifications});
+		} catch(e) {
+			console.log(e);
+			this.setState({notifications: []});
+		}
+	}
+
 	componentDidMount() {
-			this.setState({
-				notifications: [
-					{
-						title: 'August 2019, Wed. 22', 
-						key: '0',
-						data: [
-							{
-								list : [
-									{
-										key: '0',
-										url:'https://image.shutterstock.com/image-photo/smiling-bearded-young-male-model-600w-788313199.jpg',
-										timestamp:'19:33'
-									},
-									{
-										key: '1',
-										url:'https://image.shutterstock.com/image-photo/smiling-bearded-young-male-model-600w-788313199.jpg',
-										timestamp:'19:23'
-									}								
-								]
-							}
-						]
-					},
-					{
-						title: 'July 2019, Mon. 13',
-						key: '1',
-						data: [
-							{
-								list: [
-									{
-										key: '0',
-										url:'https://image.shutterstock.com/image-photo/smiling-bearded-young-male-model-600w-788313199.jpg',
-										timestamp:'23:41'
-									}
-								]
-								
-							}
-							
-						]
-					}
-				]
-			});
+
 	}
 
   render() {

@@ -43,7 +43,8 @@ class LoginForm extends React.Component {
 		await AsyncStorage.setItem('user', JSON.stringify({
 			id: this.state.data.id,
 			username: this.state.data.login,
-			token: this.state.data.token
+			token: this.state.data.token,
+			id_rasp: this.state.data.id_rasp
 		}));
 		this.props.navigation.navigate('App');
 	};
