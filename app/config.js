@@ -5,7 +5,8 @@ const prod = true; // passer à false pour le dev
 const API_URL = prod ? 'https://tchenioguillaume.fr/iot/' : 'https://tchenioguillaume.fr/iot/';
 
 const API_ENDPOINTS = {
-	user: 'user/'
+	user: 'user/',
+	rasp: 'rasp/' 
 }
 
 export default {

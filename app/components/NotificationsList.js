@@ -41,15 +41,14 @@ export class NofiticationsList extends React.Component {
 				renderItem={this.renderListItem}
 				keyExtractor={this.keyExtractor}
 			/>
-		)	
-	}	
+		)
+	}
 
 	renderSectionHeader = ({ section }) => {
 		return <Text style={styles.listHeader}>{section.title}</Text>
 	}
 
 	renderListItem = ({ item }) => {
-		console.log(item);
 		return (
 			<Notification url={item.url} timestamp={item.timestamp}/>
 		)

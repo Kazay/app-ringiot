@@ -4,6 +4,7 @@ import { View, TouchableHighlight, ScrollView, Text, StyleSheet} from 'react-nat
 import AsyncStorage from '@react-native-community/async-storage';
 import UnlockScreen from './app/views/UnlockScreen';
 import NotificationsScreen from './app/views/NotificationsScreen';
+import SettingsScreen from './app/views/SettingsScreen';
 import AuthLoadingScreen from './app/views/AuthLoadingScreen';
 import PasswordRetrievalScreen from './app/views/PasswordRetrievalScreen';
 import LoginScreen from './app/views/LoginScreen';
@@ -13,7 +14,8 @@ import UserLabel from './app/components/UserLabel';
 
 const AppStack = createDrawerNavigator({
 	Unlock: UnlockScreen,
-	Notifications: NotificationsScreen
+	Notifications: NotificationsScreen,
+	Settings: SettingsScreen
 	},
 	{
 		contentComponent: (props) => (
@@ -26,7 +28,7 @@ const AppStack = createDrawerNavigator({
 					<DrawerItems {...props}/>
 				</ScrollView>
 				<TouchableHighlight
-					style={{flex: 1, justifyContent: 'flex-end', alignItems: 'center'}} 
+					style={{flex: 1, justifyContent: 'flex-end', alignItems: 'center'}}
 					onPress={ () => {
 						AsyncStorage.clear();
 						props.navigation.navigate('Login')
