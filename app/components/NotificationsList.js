@@ -1,14 +1,16 @@
-import * as React from "react"
-import { Text, FlatList, SectionList, StyleSheet, AppState } from "react-native"
-import { Spacing, Fonts } from '../modules/Style'
-import Notification from './Notification'
+import * as React from "react";
+import { Text, FlatList, SectionList, StyleSheet, AppState } from "react-native";
+import { Spacing, Fonts } from '../modules/Style';
+import Notification from './Notification';
+import { withNavigation } from 'react-navigation';
+
 
 export class NofiticationsList extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			sections : this.props.sections
+			sections : props.sections,
 		}
 	}
 
@@ -50,7 +52,7 @@ export class NofiticationsList extends React.Component {
 
 	renderListItem = ({ item }) => {
 		return (
-			<Notification url={item.url} date={item.date}/>
+			<Notification url={item.url} date={item.date} />
 		)
 	}
 
@@ -70,7 +72,7 @@ export class NofiticationsList extends React.Component {
 	}
 }
 
-export default NofiticationsList;
+export default withNavigation(NofiticationsList);
 
 const styles = StyleSheet.create({
 	container: {

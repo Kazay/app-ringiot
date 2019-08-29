@@ -1,9 +1,7 @@
 import React from 'react';
-import SocketIOClient from 'socket.io-client';
 import { View, Button, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import { Colors, Texts, Spacing } from '../modules/Style';
-//ws://192.168.1.182:5678/newConnection
-// websocket aws : ws://15.188.62.173:3000/
+
 // Import des components
 import HeaderMenu from '../components/HeaderMenu';
 
@@ -11,20 +9,32 @@ class UnlockScreen extends React.Component {
 
 	constructor(props) {
 		super(props)
-		
+
+		this.state = {
+			url: 'https://static1.puretrend.com/articles/9/82/93/9/@/946388-sd-580x0-2.jpg'
+		}
+
 		this.unlock = this.unlock.bind(this);
 	}
-	
+
 	componentDidMount() {
-		this.socket = SocketIOClient('ws://192.168.1.182:5678/newConnection');
-		this.socket.on('connect', () => {
-			console.log('CONNECTED');
-		});
+		// Connexion aux sockets
+		// this.socket = new WebSocket('ws://172.20.10.2:5678/newConnection');
+		// this.socket.onopen = () => {
+		// 	console.log('CONNECTED'); //accessGranted
+		// };
+	}
+
+	componentDidUpdate(prevProps) {
+		// Pour changer l'url de l'écran de lock
+		if(prevProps.navigation.getParam('url') !== this.props.navigation.getParam('url')) {
+			this.setState({url: this.props.navigation.getParam('url', 'https://static1.puretrend.com/articles/9/82/93/9/@/946388-sd-580x0-2.jpg')})
+		}
 	}
 
 	unlock = () => {
 		console.log('UNLOCK')
-		this.socket.emit('unlock', { msg : 'UNLOCKED' } );
+		// this.socket.emit('unlock', { msg : 'UNLOCKED' } );
 	}
 
 	render() {
@@ -32,7 +42,7 @@ class UnlockScreen extends React.Component {
 			<View style={styles.container}>
 				<HeaderMenu navigation={this.props.navigation} title={"Unlock"}></HeaderMenu>
 				<View style={styles.content}>
-					<ImageBackground style={styles.imageBackground} source={{uri: "https://static1.puretrend.com/articles/9/82/93/9/@/946388-sd-580x0-2.jpg"}}>
+					<ImageBackground style={styles.imageBackground} source={{ uri: this.state.url }}>
 						<TouchableOpacity
 							style={styles.unlockButton}
 							onPress={ this.unlock }>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { SectionList, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { Texts, Spacing } from '../modules/Style';
+import { withNavigation } from 'react-navigation';
+
 
 // Import des components/services
 import HeaderMenu from '../components/HeaderMenu';
@@ -15,7 +17,6 @@ class NotificationsScreen extends React.Component {
     this.state = {
 			notifications: []
 		}
-
 		this._bootstrapAsync();
   }
 
@@ -41,14 +42,14 @@ class NotificationsScreen extends React.Component {
 			<View style={ styles.container }>
 				<HeaderMenu navigation={this.props.navigation} title={"Notifications"}></HeaderMenu>
 				<View style={styles.content}>
-					<NofiticationsList sections={this.state.notifications} />
+					<NofiticationsList sections={this.state.notifications}/>
 				</View>
 			</View>
     );
   }
 }
 
-export default NotificationsScreen;
+export default withNavigation(NotificationsScreen);
 
 const styles = StyleSheet.create({
   container: {

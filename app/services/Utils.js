@@ -17,9 +17,11 @@ function renderIf(condition, content) {
 function formateNotifications(notifs) {
 	let order = {};
 	let titleDates = [];
+	let addedSeconds = [];
 	// Ici on formate les arrays avec leurs titres pour tous les récupérés dans un objet
 	notifs.forEach(notif => {
 		let dayDate = moment(notif.date).hour(1).minute(0).second(0).millisecond(0).valueOf();
+		let daySecond = moment(notif.date).second(0).millisecond(0).valueOf();
 		let list = order[dayDate] && order[dayDate].data ? order[dayDate].data[0].list : [];
 		order[dayDate] = 	{
 			title : moment(dayDate).format('MMMM YYYY, ddd. Do'),
@@ -27,7 +29,12 @@ function formateNotifications(notifs) {
 				list : list
 			}]
 		};
-		list.push(notif);
+		// Fix pour avoir 1 notif par minute
+		if(addedSeconds.indexOf(daySecond) === -1) {
+			list.push(notif);
+			addedSeconds.push(daySecond);
+		}
+		console.log(addedSeconds);
 		titleDates.indexOf(dayDate) === -1 && titleDates.push(dayDate);
 	});
 	let finalArray = titleDates.map(item => { return order[item] });
