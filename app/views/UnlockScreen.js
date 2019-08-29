@@ -18,7 +18,7 @@ class UnlockScreen extends React.Component {
 	}
 
 	componentDidMount() {
-		// Connexion aux sockets
+		// Connexion aux sockets 
 		// this.socket = new WebSocket('ws://172.20.10.2:5678/newConnection');
 		// this.socket.onopen = () => {
 		// 	console.log('CONNECTED'); //accessGranted
