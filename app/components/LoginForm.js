@@ -64,15 +64,16 @@ class LoginForm extends React.Component {
 				autoCapitalize="none"
 				onSubmitEditing={() => this.passwordInput.focus()}
 				autoCorrect={false}
-				keyboardType='email-address'
+				keyboardType='text'
 				returnKeyType="next"
-				placeholder='email'
+				placeholder='username'
 				placeholderTextColor='#c7c7c8'
 				value={this.state.email}
 				onChangeText={(text) => this.handleEmailChange(text)}
 				/>
 
 				<TextInput style = {styles.input}
+				autoCapitalize="none"
 				returnKeyType="go"
 				ref={(input)=> this.passwordInput = input}
 				placeholder='password'
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
 		...Inputs.primary
 	},
 	buttonContainer:{
-		...Buttons.primary,
+		...Buttons.primary
 	},
 	buttonText:{
 		...Texts.label

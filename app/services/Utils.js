@@ -34,7 +34,6 @@ function formateNotifications(notifs) {
 			list.push(notif);
 			addedSeconds.push(daySecond);
 		}
-		console.log(addedSeconds);
 		titleDates.indexOf(dayDate) === -1 && titleDates.push(dayDate);
 	});
 	let finalArray = titleDates.map(item => { return order[item] });

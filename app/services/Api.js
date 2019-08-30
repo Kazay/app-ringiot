@@ -84,6 +84,7 @@ async function getNotifications(boxId) {
 		const response = await axios(params);
 		const result = response.data;
 		if(result.success) {
+			console.log(result.results.datas);
 			// The first user of the array is the user we want
 			return result.results.datas || [];
 		} else {

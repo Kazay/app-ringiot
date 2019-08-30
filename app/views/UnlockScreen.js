@@ -1,40 +1,40 @@
 import React from 'react';
-import { View, Button, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
-import { Colors, Texts, Spacing } from '../modules/Style';
+import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import { Colors } from '../modules/Style';
+
+// websocket aws : ws://15.188.62.173:3000/
+// websocket rapsberry : ws://81.185.165.6:5678/newConnection/
 
 // Import des components
 import HeaderMenu from '../components/HeaderMenu';
 
 class UnlockScreen extends React.Component {
-
 	constructor(props) {
 		super(props)
 
 		this.state = {
 			url: 'https://static1.puretrend.com/articles/9/82/93/9/@/946388-sd-580x0-2.jpg'
 		}
-
+ 		
 		this.unlock = this.unlock.bind(this);
 	}
-
+	
 	componentDidMount() {
-		// Connexion aux sockets 
-		// this.socket = new WebSocket('ws://172.20.10.2:5678/newConnection');
-		// this.socket.onopen = () => {
-		// 	console.log('CONNECTED'); //accessGranted
-		// };
+		this.socket = new WebSocket('ws://81.185.175.58:5678/newConnection');
+		this.socket.onopen = () => {
+			console.log('CONNECTED');
+		};
 	}
 
 	componentDidUpdate(prevProps) {
-		// Pour changer l'url de l'écran de lock
-		if(prevProps.navigation.getParam('url') !== this.props.navigation.getParam('url')) {
+		// Pour changer l'url de l'Ã©cran de lock
+		if(prevProps.navigation.getParam('url') !== this.props.navigation.getParam('url'))
 			this.setState({url: this.props.navigation.getParam('url', 'https://static1.puretrend.com/articles/9/82/93/9/@/946388-sd-580x0-2.jpg')})
-		}
 	}
 
 	unlock = () => {
-		console.log('UNLOCK')
-		// this.socket.emit('unlock', { msg : 'UNLOCKED' } );
+		console.log('UNLOCK');
+		this.socket.send('unlock');
 	}
 
 	render() {
@@ -42,7 +42,7 @@ class UnlockScreen extends React.Component {
 			<View style={styles.container}>
 				<HeaderMenu navigation={this.props.navigation} title={"Unlock"}></HeaderMenu>
 				<View style={styles.content}>
-					<ImageBackground style={styles.imageBackground} source={{ uri: this.state.url }}>
+					<ImageBackground style={styles.imageBackground} source={{uri: this.state.url}}>
 						<TouchableOpacity
 							style={styles.unlockButton}
 							onPress={ this.unlock }>

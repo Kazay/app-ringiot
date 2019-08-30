@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import RedirectModal from '../components/RedirectModal';	
 import Config from '../config';
-import { Fonts } from '../modules/Style';
+import { Fonts, Inputs, Buttons, Texts, Spacing } from '../modules/Style';
 
 class PasswordRetrievalForm extends React.Component {
 	constructor(props) {
@@ -83,7 +83,7 @@ export default PasswordRetrievalForm;
 
 const styles = StyleSheet.create({
 	container: {
-		padding: 20
+		padding: Spacing.base
 	},
 	info: {
 		paddingBottom: 20,
@@ -91,20 +91,12 @@ const styles = StyleSheet.create({
 		fontFamily: Fonts.regular,
 	},
 	input: {
-		fontFamily: Fonts.regular,
-		height: 40,
-		backgroundColor: 'rgba(225,225,225,0.2)',
-		marginBottom: 10,
-		padding: 10,
-		color: '#000'
+		...Inputs.primary
 	},
 	buttonContainer:{
-		backgroundColor: '#FFD900',
-		paddingVertical: 15
+		...Buttons.primary
 	},
 	buttonText:{
-		fontFamily: Fonts.bold,
-		color: '#000',
-		textAlign: 'center'
+		...Texts.label
 	}
 });

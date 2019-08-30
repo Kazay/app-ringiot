@@ -3,7 +3,6 @@ import { SectionList, View, Text, TouchableOpacity, Image, StyleSheet } from 're
 import { Texts, Spacing } from '../modules/Style';
 import { withNavigation } from 'react-navigation';
 
-
 // Import des components/services
 import HeaderMenu from '../components/HeaderMenu';
 import NofiticationsList from '../components/NotificationsList';
@@ -17,7 +16,7 @@ class NotificationsScreen extends React.Component {
     this.state = {
 			notifications: []
 		}
-		this._bootstrapAsync();
+	this._bootstrapAsync();
   }
 
 	async _bootstrapAsync() {
@@ -60,10 +59,10 @@ const styles = StyleSheet.create({
 		flex: 9,
 		width: '100%'
   },
-  text: {
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
+	text: {
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
 	listHeader: {
 		fontFamily: 'RobotoMono-Regular',
 		height: 50,
@@ -73,5 +72,5 @@ const styles = StyleSheet.create({
 		marginRight: Spacing.base,
 		marginTop: Spacing.large,
 		marginBottom: -10
-	}
+}
 });
