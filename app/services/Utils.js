@@ -30,6 +30,8 @@ function formateNotifications(notifs) {
 		titleDates.indexOf(dayDate) === -1 && titleDates.push(dayDate);
 	});
 	let finalArray = titleDates.map(item => { return order[item] });
+	// Pour afficher les notifs dans le bon ordre de jour 
+	finalArray = finalArray.reverse();
 
 	for (let i = 0; i < finalArray.length; i++) {
 		finalArray[i].key = i;
