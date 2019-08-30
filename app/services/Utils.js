@@ -26,15 +26,7 @@ function formateNotifications(notifs) {
 				list : list
 			}]
 		};
-<<<<<<< HEAD
-		// Fix pour avoir 1 notif par minute
-		if(addedSeconds.indexOf(daySecond) === -1) {
-			list.push(notif);
-			addedSeconds.push(daySecond);
-		}
-=======
 		list.push(notif);
->>>>>>> b386ccd58b9ec135b1e48bf11e62176dff945eb6
 		titleDates.indexOf(dayDate) === -1 && titleDates.push(dayDate);
 	});
 	let finalArray = titleDates.map(item => { return order[item] });
