@@ -13,23 +13,25 @@ class UnlockScreen extends React.Component {
 		super(props)
 
 		this.state = {
-			url: 'https://static1.puretrend.com/articles/9/82/93/9/@/946388-sd-580x0-2.jpg'
+			url: 'http://getwallpapers.com/wallpaper/full/0/7/7/759834-security-wallpapers-2880x1800-mac.jpg'
 		}
  		
 		this.unlock = this.unlock.bind(this);
 	}
 	
 	componentDidMount() {
-		this.socket = new WebSocket('ws://81.185.175.58:5678/newConnection');
+		// Connexion aux sockets
+		this.socket = new WebSocket('ws://172.20.10.2:5678');
 		this.socket.onopen = () => {
-			console.log('CONNECTED');
+			console.log('CONNECTED'); //accessGranted
 		};
 	}
 
 	componentDidUpdate(prevProps) {
-		// Pour changer l'url de l'Ã©cran de lock
-		if(prevProps.navigation.getParam('url') !== this.props.navigation.getParam('url'))
-			this.setState({url: this.props.navigation.getParam('url', 'https://static1.puretrend.com/articles/9/82/93/9/@/946388-sd-580x0-2.jpg')})
+		// Pour changer l'url de l'écran de lock
+		if(prevProps.navigation.getParam('url') !== this.props.navigation.getParam('url')) {
+			this.setState({url: this.props.navigation.getParam('url', 'http://getwallpapers.com/wallpaper/full/0/7/7/759834-security-wallpapers-2880x1800-mac.jpg')})
+		}
 	}
 
 	unlock = () => {
